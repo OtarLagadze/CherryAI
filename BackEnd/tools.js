@@ -1,14 +1,6 @@
 import { z } from "zod";
 import { runLLM } from "./llm.js";
 
-/**
- * Inputs:
- * - comment: original reviewer comment
- * - code: the open code slice / diff hunk being reviewed
- * - filePath: path for context (optional but helpful)
- * - language: hint (auto/js/ts/py/go/rb/etc) - we won't gate on it
- * - stylePreset: "friendly" | "neutral" | "formal"
- */
 export const AnalyzeArgsSchema = z.object({
   comment: z.string().describe("Original reviewer comment text"),
   code: z.string().describe("Relevant code slice or diff hunk currently open"),
@@ -17,13 +9,6 @@ export const AnalyzeArgsSchema = z.object({
   stylePreset: z.enum(["friendly", "neutral", "formal"]).default("friendly")
 });
 
-/**
- * analyze_review:
- * - Rewrites tone/style of the original comment
- * - Scans the provided code to suggest additional comments the author might have missed:
- *   improvements, potential bugs, edge cases, clarity or naming issues, performance notes, tests.
- * - Returns strict JSON your UI can render.
- */
 export const AnalyzeReviewTool = {
   name: "analyze_review",
   desc: "Rewrite review comment with better tone and add extra suggestions (improvements/bugs) from the provided code.",
@@ -64,16 +49,13 @@ export const AnalyzeReviewTool = {
       user: JSON.stringify(userPayload)
     });
 
-    // Must be valid JSON per response_format
     let parsed;
     try {
       parsed = JSON.parse(content);
     } catch (e) {
-      // If the model violated the contract, fail fast—caller should surface the error.
       throw new Error("Model did not return valid JSON.");
     }
 
-    // Basic shape guard (lightweight)
     if (
       typeof parsed !== "object" ||
       typeof parsed.rewritten !== "string" ||
@@ -82,7 +64,6 @@ export const AnalyzeReviewTool = {
       throw new Error("Model JSON shape invalid.");
     }
 
-    // Normalize minimal fields
     parsed.suggestions = parsed.suggestions.map((s, i) => ({
       id: String(s?.id ?? `sug-${i + 1}`),
       severity: s?.severity === "error" || s?.severity === "warn" ? s.severity : "info",

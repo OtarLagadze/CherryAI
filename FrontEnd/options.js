@@ -1,4 +1,3 @@
-// options.js
 const baseEl = document.getElementById("base");
 const keyEl = document.getElementById("key");
 const saveBtn = document.getElementById("save");

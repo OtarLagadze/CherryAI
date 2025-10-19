@@ -1,5 +1,3 @@
-// messaging.js
-
 function sendMessageWithTimeout(message, timeoutMs = 15000) {
   return new Promise((resolve, reject) => {
     let done = false;

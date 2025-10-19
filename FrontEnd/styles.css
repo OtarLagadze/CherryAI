@@ -1,27 +1,20 @@
-/* -----------------------------------------------------------
-   GitHub Better Comments — Blue-Tinted GitHub Style
-   ----------------------------------------------------------- */
 
-/* ===== Base palette ===== */
 :root {
-  /* Surfaces & text */
-  --bc-surface: #eaf2ff;       /* soft blue panel background */
-  --bc-border: #bcd2f7;        /* blueish border tone */
+  --bc-surface: #eaf2ff;
+  --bc-border: #bcd2f7;
   --bc-text: #0d234a;
   --bc-muted: #4b628c;
 
-  /* Blues */
-  --blue-bg: #0969da;           /* primary button blue */
+  --blue-bg: #0969da;
   --blue-hover: #0759bb;
   --blue-active: #054da3;
   --blue-border: #1a7efb;
   --blue-glow: rgba(9, 105, 218, 0.25);
 }
 
-/* ===== Dark mode ===== */
 @media (prefers-color-scheme: dark) {
   :root {
-    --bc-surface: #0e1a33;      /* deep navy tint */
+    --bc-surface: #0e1a33;
     --bc-border: #203459;
     --bc-text: #e3eeff;
     --bc-muted: #9db2d9;
@@ -34,7 +27,6 @@
   }
 }
 
-/* ===== Panel ===== */
 .gh-better-wrap {
   margin-top: 14px;
   border-radius: 6px;
@@ -49,7 +41,6 @@
   box-shadow: 0 4px 10px rgba(56, 139, 253, 0.25);
 }
 
-/* ===== Header ===== */
 .gh-better-header {
   font-weight: 600;
   font-size: 14px;
@@ -57,7 +48,6 @@
   color: var(--bc-text);
 }
 
-/* ===== Textarea ===== */
 .gh-better-textarea {
   width: 100%;
   min-height: 100px;
@@ -65,7 +55,7 @@
   font-size: 13px;
   line-height: 1.5;
   color: var(--bc-text);
-  background: #f4f8ff; /* lighter blueish background */
+  background: #f4f8ff;
   border: 1px solid var(--bc-border);
   border-radius: 6px;
   padding: 10px 12px;
@@ -81,12 +71,10 @@
   box-shadow: 0 0 0 3px var(--blue-glow);
 }
 
-/* ===== Utilities ===== */
 .u-flex { display: flex; }
 .u-row { flex-direction: row; align-items: center; }
 .u-gap-8 { gap: 8px; }
 
-/* ===== Buttons ===== */
 .u-btn {
   border-radius: 6px;
   font-size: 13px;
@@ -110,7 +98,6 @@
   .u-btn { background: #1c2b45; }
 }
 
-/* ===== Primary (Improve) — GitHub-style blue ===== */
 .u-btn-primary {
   background-color: var(--blue-bg);
   border: 1px solid var(--blue-bg);
@@ -129,7 +116,6 @@
   box-shadow: 0 0 0 3px var(--blue-glow);
 }
 
-/* ===== “Add Cherry on Top” (secondary) ===== */
 .u-btn:nth-of-type(2) {
   background-color: #f0f6ff;
   color: var(--bc-text);
@@ -141,7 +127,6 @@
   background-color: #d9e8ff;
 }
 
-/* ===== Status line ===== */
 .gh-better-status {
   font-size: 12px;
   color: var(--bc-muted);
@@ -149,8 +134,75 @@
   min-height: 18px;
 }
 
-/* ===== Animation ===== */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(6px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+.gh-better-suggestions {
+  margin-top: 8px;
+  background: rgba(255,255,255,0.6);
+  border: 1px solid var(--bc-border);
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+@media (prefers-color-scheme: dark) {
+  .gh-better-suggestions {
+    background: rgba(19, 35, 71, 0.5);
+  }
+}
+.gh-better-sug-title {
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--bc-text);
+  margin-bottom: 6px;
+}
+.gh-better-sug-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+.gh-better-sug-item {
+  border: 1px solid var(--bc-border);
+  border-radius: 6px;
+  padding: 6px 8px;
+  background: #fff;
+}
+@media (prefers-color-scheme: dark) {
+  .gh-better-sug-item { background: #0d1117; }
+}
+.gh-better-sug-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.gh-better-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 999px;
+  color: #fff;
+}
+.gh-badge-info  { background: #3b82f6; }
+.gh-badge-warn  { background: #eab308; }
+.gh-badge-error { background: #ef4444; }
+
+.gh-better-cat {
+  font-size: 11px;
+  color: var(--bc-muted);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.gh-better-msg {
+  font-size: 13px;
+  color: var(--bc-text);
+  margin-bottom: 2px;
+}
+.gh-better-evidence {
+  font-size: 12px;
+  color: var(--bc-muted);
 }
