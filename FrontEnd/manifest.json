@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "GitHub Comment assistant",
+  "version": "0.1.0",
+  "description": "Adds a 'Comment assistant' field under GitHub editors and fetches AI-improved text (frontend-only, stubbed backend).",
+  "permissions": ["storage", "scripting"],
+  "host_permissions": ["https://github.com/*"],
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*"],
+      "js": ["dom-utils.js", "messaging.js", "content-script.js"],
+      "css": ["styles.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "options_page": "options.html",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "128": "icons/icon128.png"
+  }
+}
