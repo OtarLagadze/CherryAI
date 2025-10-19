@@ -1,0 +1,156 @@
+/* -----------------------------------------------------------
+   GitHub Better Comments — Blue-Tinted GitHub Style
+   ----------------------------------------------------------- */
+
+/* ===== Base palette ===== */
+:root {
+  /* Surfaces & text */
+  --bc-surface: #eaf2ff;       /* soft blue panel background */
+  --bc-border: #bcd2f7;        /* blueish border tone */
+  --bc-text: #0d234a;
+  --bc-muted: #4b628c;
+
+  /* Blues */
+  --blue-bg: #0969da;           /* primary button blue */
+  --blue-hover: #0759bb;
+  --blue-active: #054da3;
+  --blue-border: #1a7efb;
+  --blue-glow: rgba(9, 105, 218, 0.25);
+}
+
+/* ===== Dark mode ===== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bc-surface: #0e1a33;      /* deep navy tint */
+    --bc-border: #203459;
+    --bc-text: #e3eeff;
+    --bc-muted: #9db2d9;
+
+    --blue-bg: #1f6feb;
+    --blue-hover: #388bfd;
+    --blue-active: #1a60d4;
+    --blue-border: #388bfd;
+    --blue-glow: rgba(56, 139, 253, 0.35);
+  }
+}
+
+/* ===== Panel ===== */
+.gh-better-wrap {
+  margin-top: 14px;
+  border-radius: 6px;
+  border: 1px solid var(--bc-border);
+  background: var(--bc-surface);
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(56, 139, 253, 0.15);
+  animation: fadeIn 0.3s ease;
+  transition: box-shadow 0.2s;
+}
+.gh-better-wrap:hover {
+  box-shadow: 0 4px 10px rgba(56, 139, 253, 0.25);
+}
+
+/* ===== Header ===== */
+.gh-better-header {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: var(--bc-text);
+}
+
+/* ===== Textarea ===== */
+.gh-better-textarea {
+  width: 100%;
+  min-height: 100px;
+  font-family: 'Fira Code', Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--bc-text);
+  background: #f4f8ff; /* lighter blueish background */
+  border: 1px solid var(--bc-border);
+  border-radius: 6px;
+  padding: 10px 12px;
+  resize: vertical;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+@media (prefers-color-scheme: dark) {
+  .gh-better-textarea { background: #132347; }
+}
+.gh-better-textarea:focus {
+  outline: none;
+  border-color: var(--blue-border);
+  box-shadow: 0 0 0 3px var(--blue-glow);
+}
+
+/* ===== Utilities ===== */
+.u-flex { display: flex; }
+.u-row { flex-direction: row; align-items: center; }
+.u-gap-8 { gap: 8px; }
+
+/* ===== Buttons ===== */
+.u-btn {
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 5px 16px;
+  border: 1px solid var(--bc-border);
+  background-color: #f6f8fa;
+  color: var(--bc-text);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s;
+}
+.u-btn:hover {
+  background-color: #f3f4f6;
+  box-shadow: 0 1px 0 rgba(27, 31, 36, 0.04);
+}
+.u-btn:active {
+  background-color: #ebedef;
+  transform: translateY(1px);
+}
+@media (prefers-color-scheme: dark) {
+  .u-btn { background: #1c2b45; }
+}
+
+/* ===== Primary (Improve) — GitHub-style blue ===== */
+.u-btn-primary {
+  background-color: var(--blue-bg);
+  border: 1px solid var(--blue-bg);
+  color: #ffffff;
+}
+.u-btn-primary:hover {
+  background-color: var(--blue-hover);
+  border-color: var(--blue-hover);
+}
+.u-btn-primary:active {
+  background-color: var(--blue-active);
+  border-color: var(--blue-active);
+}
+.u-btn-primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--blue-glow);
+}
+
+/* ===== “Add Cherry on Top” (secondary) ===== */
+.u-btn:nth-of-type(2) {
+  background-color: #f0f6ff;
+  color: var(--bc-text);
+}
+.u-btn:nth-of-type(2):hover {
+  background-color: #e7f0ff;
+}
+.u-btn:nth-of-type(2):active {
+  background-color: #d9e8ff;
+}
+
+/* ===== Status line ===== */
+.gh-better-status {
+  font-size: 12px;
+  color: var(--bc-muted);
+  margin-top: 8px;
+  min-height: 18px;
+}
+
+/* ===== Animation ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

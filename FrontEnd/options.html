@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>GitHub Comment assistant — Options</title>
+    <style>
+      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; padding: 16px; }
+      label { display:block; margin: 8px 0 4px; font-weight: 600; }
+      input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 6px; }
+      .row { margin-top: 12px; display:flex; gap:8px; }
+      button { padding:8px 12px; border:1px solid #ccc; border-radius:6px; background:#f6f8fa; cursor:pointer; }
+      button:hover { background:#f3f4f6; }
+      .muted { color:#6a737d; margin-top: 8px; }
+    </style>
+  </head>
+  <body>
+    <h2>GitHub Comment assistant — Options</h2>
+    <p class="muted">Set your backend AI agent details (optional for now; the extension will use a stub if unset).</p>
+
+    <label for="base">Base URL (e.g., https://api.example.com)</label>
+    <input id="base" type="text" placeholder="https://api.example.com" />
+
+    <label for="key">API Key (Bearer)</label>
+    <input id="key" type="password" placeholder="Optional" />
+
+    <div class="row">
+      <button id="save">Save</button>
+      <button id="reset">Reset</button>
+    </div>
+
+    <p id="status" class="muted"></p>
+
+    <script src="options.js"></script>
+  </body>
+</html>
